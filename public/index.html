@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header id="header">
+        <nav>
+            <ul class="nav-left">
+                <li><a href="index.html">Home</a></li>
+            </ul>
+            <ul class="nav-right">
+                <!-- Placeholder for user icon and name -->
+                <li id="user-info" class="dropdown">
+                    <!-- Icon and username will be injected here -->
+                </li>
+                <!-- Login link, hidden when user is logged in -->
+                <li id="login-link"><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <!-- Large Image at the top -->
+        <section class="large-image-section">
+            <img src="./images/Home.jpg" alt="Welcome" class="large-image">
+        </section>
+
+        <!-- Bottom section with split halves -->
+        <section class="split-container">
+            <!-- Left Half: Text -->
+            <div class="split-half">
+                <h2>About Us</h2>
+                <p>
+                    Welcome to our website! We are dedicated to providing the best services to our customers. Our team of experts ensures high-quality solutions tailored to meet your specific needs. Join us on this exciting journey and explore what we have to offer.
+                </p>
+            </div>
+
+            <!-- Right Half: Text -->
+            <div class="split-half">
+                <h2>Our Services</h2>
+                <p>
+                    We offer a wide range of services, including web development, mobile applications, cloud solutions, and more. Our innovative approaches ensure that your business stays ahead in the digital world. Let us help you achieve your goals with our cutting-edge
+                    technologies.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2024 Transparent Header Website. All rights reserved.</p>
+    </footer>
+
+    <!-- Script to Display User Information -->
+    <script>
+        window.onload = function() {
+            // Retrieve the user information from sessionStorage
+            const user = JSON.parse(sessionStorage.getItem('user'));
+
+            if (user) {
+                // If the user is logged in, show the round icon and user details
+                const userInfo = document.getElementById('user-info');
+                userInfo.innerHTML = `
+                    <div class="user-icon-container">
+                        <!-- Embedded SVG icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M12 12c-2.761 0-5-2.238-5-5s2.239-5 5-5 5 2.238 5 5-2.239 5-5 5zm0 1c-3.314 0-9 1.688-9 5v2h18v-2c0-3.312-5.686-5-9-5z"/></svg>
+                        <span>${user.firstName} ${user.lastName}</span>
+                        <!-- Dropdown for QR Login and Logout -->
+                        <div class="dropdown-content">
+                            <a href="qr-login.html" id="qr-login">QR Login</a>
+                            <a href="#" id="logout">Logout</a>
+                        </div>
+                    </div>
+                `;
+
+                // Hide the login link if the user is logged in
+                document.getElementById('login-link').style.display = 'none';
+
+                // Handle the logout click
+                document.getElementById('logout').onclick = function() {
+                    // Clear the sessionStorage
+                    sessionStorage.clear();
+                    // Redirect to the original home page
+                    window.location.href = 'index.html';
+                };
+
+                // Toggle dropdown visibility on icon click
+                userInfo.onclick = function() {
+                    const dropdownContent = document.querySelector('.dropdown-content');
+                    dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+                };
+            }
+        }
+    </script>
+</body>
+
+</html>

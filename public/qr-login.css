@@ -1,0 +1,48 @@
+/* QR Page Specific Styling */
+
+
+/* Centering the QR Section */
+
+.qr-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.qr-section {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    text-align: center;
+}
+
+.qr-section h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.qr-section p {
+    font-size: 1rem;
+    margin: 10px 0;
+}
+
+#qr-code {
+    margin: 20px 0;
+}
+
+#qr-code img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    margin: 20px auto;
+}
+
+
+/* #qr-code img { 
+
+max-width: 250px;
+margin: 20px auto;
+
+}*/

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan QR Code to Login</title>
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="qr-scan.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/instascan/1.0.0/instascan.min.js"></script>
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul class="nav-left">
+                <li><a href="index.html">Home</a></li>
+            </ul>
+            <ul class="nav-right">
+                <li id="user-info" class="dropdown"></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="qr-main">
+        <div class="qr-section">
+            <h1>Scan QR Code to Login</h1>
+            <video id="preview"></video>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 Transparent Header Website. All rights reserved.</p>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            const scanner = new Instascan.Scanner({
+                video: document.getElementById('preview')
+            });
+
+            scanner.addListener('scan', function(content) {
+                // Send scanned sessionId to server for verification
+                fetch('/qr-login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            sessionId: content
+                        }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Store user information in sessionStorage
+                            sessionStorage.setItem('user', JSON.stringify(data.user));
+
+                            // Redirect to the home page or logged-in page
+                            window.location.href = 'index.html';
+                        } else {
+                            alert('Login failed: ' + data.message);
+                        }
+                    })
+                    .catch(error => console.error('Error during login:', error));
+            });
+
+            Instascan.Camera.getCameras().then(function(cameras) {
+                if (cameras.length > 0) {
+                    scanner.start(cameras[0]);
+                } else {
+                    console.error('No cameras found.');
+                }
+            }).catch(function(e) {
+                console.error(e);
+            });
+        };
+    </script>
+</body>
+
+</html>

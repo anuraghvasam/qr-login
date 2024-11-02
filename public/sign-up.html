@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Account</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="sign-up.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header id="header">
+        <nav>
+            <ul class="nav-left">
+                <li><a href="index.html">Home</a></li>
+            </ul>
+            <ul class="nav-right">
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sign Up Section -->
+    <main class="form-wrapper">
+        <div class="form-container signup-container">
+            <h2>Create a New Account</h2>
+            <form id="signup-form">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" required>
+
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+                <label for="create-password">Create Password (12 characters minimum)</label>
+                <input type="password" id="create-password" name="create-password" placeholder="Create your password" minlength="12" required>
+
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+
+                <button type="submit" class="btn-submit">Create Account</button>
+                <p id="error-message" style="color: red; display: none;">Passwords do not match or are too short!</p>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2024 Transparent Header Website. All rights reserved.</p>
+    </footer>
+
+    <script>
+      const form = document.getElementById('signup-form');
+    
+      form.addEventListener('submit', async function(event) {
+        event.preventDefault();  // Prevent default form submission
+    
+        // Get form data
+        const firstName = document.getElementById('first-name').value;
+        const lastName = document.getElementById('last-name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const password = document.getElementById('create-password').value;
+        const confirmPassword = document.getElementById('confirm-password').value;
+    
+        // Validate passwords
+        if (password.length < 12 || password !== confirmPassword) {
+          alert('Passwords do not match or are too short!');
+          return;
+        }
+    
+        try {
+          // Send the form data to the backend using a POST request
+          const response = await fetch('http://localhost:3000/signup', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ firstName, lastName, email, phone, password }),
+          });
+    
+          if (response.ok) {
+            alert('Account created successfully!');
+            // Redirect to login page after success
+            window.location.href = 'login.html';  // Adjust path if necessary
+          } else {
+            alert('Error creating account. Please try again.');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          alert('Failed to create account. Please try again later.');
+        }
+      });
+    </script>
+    
+
+      
+</body>
+</html>

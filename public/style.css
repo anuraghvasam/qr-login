@@ -1,0 +1,337 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set Global Font to Inter */
+html, body {
+    font-family: 'Inter', sans-serif;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 60px;
+}
+
+/* Header Navigation */
+header {
+    background-color: rgba(51, 51, 51, 1);
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+}
+
+.nav-left {
+    justify-content: flex-start;
+}
+
+.nav-right {
+    justify-content: flex-end;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+}
+/* Large Image Section */
+.large-image-section {
+    width: 100%;
+    height: 400px; /* Adjust the height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.large-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the entire area without distortion */
+}
+
+/* Split Bottom Section */
+.split-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 40px 20px;
+    background-color: #f8f9fa;
+}
+
+.split-half {
+    width: 48%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.split-half h2 {
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.split-half p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+
+/* Split Main Section for QR Code and Login Form on the Login Page */
+main.split-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 20px;
+    background-color: #f8f9fa;
+    align-items: flex-start;
+}
+
+/* Left Half (QR Code Section for Login Page) */
+.qr-section {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.qr-section h2 {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+.qr-section p {
+    margin-bottom: 20px;
+    font-size: 1rem;
+    color: #555;
+}
+
+.qr-section img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+/* Right Half (Login Form Section for Login Page) */
+.login-section {
+    width: 45%;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.login-container label {
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem; /* Increase input font size for readability */
+}
+
+.login-container .btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.login-container .btn-submit:hover {
+    background-color: #555;
+}
+
+.login-container .form-links {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.login-container .form-links a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-container .form-links a:hover {
+    text-decoration: underline;
+}
+
+/* Form Wrapper */
+.form-wrapper {
+    flex: 1; /* Takes up remaining space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Sign Up Page Styling */
+.signup-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto; /* Center form */
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.signup-container h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.signup-container label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.signup-container input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.signup-container .btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.signup-container .btn-submit:hover {
+    background-color: #555;
+}
+
+/* User icon container */
+.user-icon-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Username styling */
+.user-icon-container span {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff; /* Ensure text is visible */
+}
+
+/* Dropdown styling */
+.dropdown-content {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 50px; /* Align just below the icon */
+    right: 0;
+    background-color: #333;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.dropdown-content a:hover {
+    background-color: #555;
+}
+
+.qr-section {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* QR code styling */
+#qrcode {
+    margin: 20px auto;
+}
+
+.qr-section h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.qr-section p {
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+
+/* Footer Styling */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}

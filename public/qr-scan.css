@@ -1,0 +1,25 @@
+/* Center the scanner on the page */
+
+.qr-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Full height of the viewport */
+}
+
+.qr-section {
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+video {
+    width: 100%;
+    /* Full width of the section */
+    max-width: 300px;
+    /* Reduce the size of the scanner */
+    border: 2px solid #000;
+    border-radius: 8px;
+    margin-top: 20px;
+}

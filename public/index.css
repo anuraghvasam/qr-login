@@ -1,0 +1,42 @@
+/* Large Image Section */
+.large-image-section {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.large-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Split Bottom Section */
+.split-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 40px 20px;
+    background-color: #f8f9fa;
+}
+
+.split-half {
+    width: 48%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.split-half h2 {
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.split-half p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}

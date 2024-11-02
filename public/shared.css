@@ -1,0 +1,115 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set Global Font to Inter */
+html, body {
+    font-family: 'Inter', sans-serif;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 60px;
+}
+
+/* Header Styling */
+header {
+    background-color: rgba(51, 51, 51, 1);
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+}
+
+.nav-left {
+    justify-content: flex-start;
+}
+
+.nav-right {
+    justify-content: flex-end;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+}
+
+/* User icon container */
+.user-icon-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Username styling */
+.user-icon-container span {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff; /* Ensure text is visible */
+}
+
+/* Dropdown styling */
+.dropdown-content {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 50px; /* Align just below the icon */
+    right: 0;
+    background-color: #333;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.dropdown-content a:hover {
+    background-color: #555;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    margin-top: auto; /* Ensure footer sticks to the bottom */
+    position: relative;
+    bottom: 0;
+}

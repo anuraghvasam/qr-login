@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Login</title>
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="qr-login.css">
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header id="header">
+        <nav>
+            <ul class="nav-left">
+                <li><a href="index.html">Home</a></li>
+            </ul>
+            <ul class="nav-right">
+                <li id="user-info" class="dropdown">
+                    <!-- User information is injected here -->
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Section for QR Code -->
+    <main class="qr-main">
+        <div class="qr-section">
+            <h1>QR Login</h1>
+            <p>Scan the QR code below to login with your credentials:</p>
+            <div id="qr-code">
+                <img id="qrImage" src="" alt="QR Code">
+            </div>
+
+            <p id="fullName">
+                <!-- Full name will be displayed here -->
+            </p>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2024 Transparent Header Website. All rights reserved.</p>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            const user = JSON.parse(sessionStorage.getItem('user'));
+
+            if (user) {
+                const userInfo = document.getElementById('user-info');
+                userInfo.innerHTML = `
+                    <div class="user-icon-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
+                            <path d="M12 12c-2.761 0-5-2.238-5-5s2.239-5 5-5 5 2.238 5 5-2.239 5-5 5zm0 1c-3.314 0-9 1.688-9 5v2h18v-2c0-3.312-5.686-5-9-5z"/>
+                        </svg>
+                        <span>${user.firstName} ${user.lastName}</span>
+                        <div class="dropdown-content">
+                            <a href="qr-login.html">QR Login</a>
+                            <a href="#" id="logout">Logout</a>
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('fullName').innerText = `${user.firstName} ${user.lastName}`;
+                document.getElementById('logout').onclick = function() {
+                    sessionStorage.clear();
+                    window.location.href = 'index.html';
+                };
+
+                // Generate the QR Code using the session data (email/phone)
+                fetch('/generate-qr', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            emailOrPhone: user.email || user.phone // Using stored email/phone for QR code generation
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.qrCode) {
+                            document.getElementById('qrImage').src = data.qrCode;
+                        } else {
+                            console.error('QR Code not found in response');
+                        }
+                    })
+                    .catch(err => console.error('Error fetching QR Code:', err));
+            } else {
+                console.error('User is not logged in.');
+            }
+        };
+    </script>
+</body>
+
+</html>
